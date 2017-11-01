@@ -1,4 +1,3 @@
-
 package org.controller;
 
 import java.util.Stack;
@@ -65,7 +64,7 @@ public class RpnCalculator {
             return 0.0;
         }
     }
- 
+
     private static boolean isOperator(char i) {
         return prec(i) > 0;
     }
