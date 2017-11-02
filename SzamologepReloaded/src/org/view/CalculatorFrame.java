@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,13 +28,19 @@ public class CalculatorFrame extends JFrame {
     private JButton[] operatorGombok = new JButton[6];//operátor tömb
     private String[] muveletiJel = new String[]{"+", "-", "*", "=", ".", "/"}; //műveleti jelek
 
-    public CalculatorFrame() {
+    public CalculatorFrame() { //a JFrame beállításai
 
+        JFrame.setDefaultLookAndFeelDecorated(true);
         this.setTitle("Számológép");
+        this.setSize(250,300);
+        this.setLocation(400, 250);
+	this.setResizable(false);
+        getRootPane().setBorder(
+        BorderFactory.createMatteBorder(4, 4, 4, 4, Color.LIGHT_GRAY));
         this.setLayout(new BorderLayout()); //ablak layout beállítása
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+       
         initComp();
-        this.pack();
     }
 
     private void initComp() { //inicializálja a felületet
@@ -51,6 +58,7 @@ public class CalculatorFrame extends JFrame {
     private void initSzamgombok() { //gombok létrehozása és ActionListener beállítása
         for (int i = 0; i < 10; i++) {
             szamGombok[i] = new JButton(String.valueOf(i));
+            szamGombok[i].setBorder(BorderFactory.createEtchedBorder(0));
             szamGombok[i].addActionListener(this::szamAction); //actionListener
         }
     }
@@ -62,6 +70,8 @@ public class CalculatorFrame extends JFrame {
     private void initMuveletigombok() { //gombok létrehozása és ActionListener beállítása
         for (int i = 0; i < muveletiJel.length; i++) {
             operatorGombok[i] = new JButton(String.valueOf(muveletiJel[i]));
+            operatorGombok[i].setBorder(BorderFactory.createEtchedBorder(0));
+            operatorGombok[i].setForeground(Color.blue);
             operatorGombok[i].addActionListener(this::operatorAction);
         }
     }
